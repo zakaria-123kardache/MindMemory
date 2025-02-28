@@ -3,13 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/app.css">
     <title>MindMemory</title>
 </head>
 <body>
-    
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="game-board-container">
+                    <div id="gameBoard" class="grid-container">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="game-info-card">
+                    <div class="game-logo">
+                        <h1>MindMemory</h1>
+                        <p class="subtitle">Test your memory skills</p>
+                    </div>
 
-    <script src="./assets/js/app.js">
-    </script>
+                    <div class="info-section">
+                        <div class="info-item">
+                            <div class="info-label">Time</div>
+                            <div class="info-value">
+                                <i class="fas fa-clock"></i>
+                                <span id="timer">00:00</span>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-label">Moves</div>
+                            <div class="info-value">
+                                <i class="fas fa-hand-point-up"></i>
+                                <span id="moves">0</span>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-label">Score</div>
+                            <div class="info-value">
+                                <i class="fas fa-star"></i>
+                                <span id="score">0</span>/12
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-label">Rating</div>
+                            <div class="info-value" id="stars-container">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="controls">
+                        <button id="restart" class="btn btn-primary btn-lg">
+                            <i class="fas fa-redo"></i> Restart Game
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/app.js"></script>
 </body>
 </html>
