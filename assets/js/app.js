@@ -1,6 +1,8 @@
 let lockBoard = false;
 let firstCard = null;
 let secondCard = null;
+let timer;
+let seconds = 0;
 
 
 async function fetchCard() {
@@ -51,7 +53,6 @@ function createCard(card, index) {
     return cardElement;
 }
 
-fetchCard();
 
 function handleCardClick(event) {
     if (lockBoard) return;
@@ -63,6 +64,8 @@ function handleCardClick(event) {
 
     if (!firstCard) {
         firstCard = cardInner;
+        if (seconds === 0) startTimer();
+        console.log(seconds);
         return;
     }
 
@@ -75,8 +78,9 @@ function flipCard(card) {
 
 function checkForMatch() {
     lockBoard = true;
-    const isMatch = firstCard.querySelector('.card-front span').textContent ===
-        secondCard.querySelector('.card-front span').textContent;
+    const isMatch = firstCard.querySelector('.card-front img').alt ===
+     secondCard.querySelector('.card-front img').alt;
+
 
     isMatch ? handleMatch() : handleNotmatch();
 }
@@ -87,13 +91,27 @@ function handleMatch() {
     resetTurn();
 }
 function handleNotmatch() {
-    firstCard.classList.remove('is-flipped');
-    secondCard.classList.remove('is-flipped');
-    resetTurn();
+    setTimeout(() => {
+        firstCard.classList.remove('is-flipped');
+        secondCard.classList.remove('is-flipped');
+        resetTurn();
+    }, 1000);
 }
 function resetTurn() {
     [firstCard, secondCard] = [null, null];
     lockBoard = false;
+}
+
+function startTimer() {
+    timer = setInterval(() => {
+        seconds++;
+    }, 1000);
+}
+
+function formatTime(totalSeconds) {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 }
 
 
