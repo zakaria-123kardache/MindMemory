@@ -1,3 +1,8 @@
+let lockBoard = false;
+let firstCard = null ; 
+let secondCard = null ; 
+
+
 async function fetchCard()
 {   
     try{
@@ -47,7 +52,34 @@ function createCard(card, index)
             </div>
         </div>
     `;
+    cardElement.addEventListener('click', handleCardClick);
     return cardElement;
 }
 
 fetchCard();
+
+function handleCardClick(event) {
+    if (lockBoard) return;
+    
+    const cardInner = event.target.closest('.card-inner');
+    if (!cardInner || cardInner.classList.contains('is-flipped')) return;
+
+    flipCard(cardInner);
+
+    if (!firstCard) {
+        firstCard = cardInner;
+        return;
+    }
+
+    secondCard = cardInner;
+    checkForMatch();
+}
+function flipCard(card) {
+    card.classList.add('is-flipped');
+}
+
+function checkForMatch() {
+    lockBoard = true;
+
+}
+

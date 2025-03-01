@@ -55,6 +55,12 @@ body {
     transform: rotateY(180deg);
     box-shadow: 0 4px 15px rgba(255, 94, 98, 0.2);
 }
+.card-front img {
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+
+}
 
 .card-back {
     background: linear-gradient(135deg, #2c3e50, #3498db);
